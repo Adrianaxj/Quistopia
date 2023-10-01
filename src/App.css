@@ -64,7 +64,7 @@
 
 .quiz-author {
     font-size: 8px;
-}
+} 
 
 .map {
     border: 1px solid black;
@@ -72,3 +72,7 @@
     color: green;
 }
 
+.map-container {
+  height: 600px;
+  width:1280px;
+  } 

@@ -8,6 +8,7 @@ function CreateQuiz() {
     let [answer, setAnswer] = useState('')
 
     async function handleCreateQuiz() {
+        localStorage.removeItem('activeQuiz');
         let token = localStorage.getItem('token');
         if(!token) {
             alert('not logged in');
@@ -20,7 +21,6 @@ function CreateQuiz() {
             alert("Quiz already exists")
         else
             setQuizId(response);
-        //console.log(response);
     }
 
     async function handleCreateQuestion() {
@@ -29,9 +29,12 @@ function CreateQuiz() {
             alert('not logged in');
             return;
         }
+        let markerPos = localStorage.getItem('markerPosition');
+        if(!markerPos) return;
 
-        let long = '12';
-        let lat = '32';
+        var latlng = JSON.parse(markerPos);
+        let long = latlng.lng;
+        let lat = latlng.lat;
         let newQuestion : Question = { 
             name: quizId,
             question: question,
@@ -45,7 +48,6 @@ function CreateQuiz() {
         else
         {
             alert('Question added');
-            //addMarkerAndQuestionToMap(null, map, question, answer, lat, long)
         }
     }
 

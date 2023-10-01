@@ -27,7 +27,8 @@ function QuizGame() {
         // add popup with qustions / answer
         console.log(test);
     }
-
+    localStorage.removeItem('activeQuiz');
+    
     async function getAllQuiz() {
         const response : Quiz[] = await getAllQuizzes();
         if (response) {
